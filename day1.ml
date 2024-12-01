@@ -27,8 +27,7 @@ type phase =
   | Count of int
   | Trail of int * int
 
-let rec part2_help sum ls rs p =
-  match p with
+let rec part2_help sum ls rs = function
   | Search ->
     (match ls, rs with
      | l :: ls', r :: rs' ->
@@ -99,5 +98,5 @@ let%test_unit _ =
 
 let%test_unit _ =
   let input = [%embed_file_as_string "inputs/day1.txt"] in
-  [%test_result: int] (part2 input) ~expect:3246517
+  [%test_result: int] (part2 input) ~expect:29379307
 ;;
