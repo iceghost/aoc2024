@@ -1,18 +1,7 @@
 open Base
 
 let part1 s =
-  let ss = String.split_lines s in
-  let left, right =
-    List.fold
-      ~init:([], [])
-      ~f:(fun (left, right) line ->
-        match
-          String.split ~on:' ' line |> List.filter ~f:(Fn.compose not String.is_empty)
-        with
-        | [ a; b ] -> Int.of_string a :: left, Int.of_string b :: right
-        | _ -> raise (Failure "what the fuck"))
-      ss
-  in
+  let left, right = Day1_parser.main Day1_lexer.token (Lexing.from_string s) in
   let left_sorted = List.sort ~compare:Int.compare left in
   let right_sorted = List.sort ~compare:Int.compare right in
   match
@@ -57,18 +46,7 @@ let rec part2_help sum ls rs = function
 ;;
 
 let part2 s =
-  let ss = String.split_lines s in
-  let left, right =
-    List.fold
-      ~init:([], [])
-      ~f:(fun (left, right) line ->
-        match
-          String.split ~on:' ' line |> List.filter ~f:(Fn.compose not String.is_empty)
-        with
-        | [ a; b ] -> Int.of_string a :: left, Int.of_string b :: right
-        | _ -> raise (Failure "what the fuck"))
-      ss
-  in
+  let left, right = Day1_parser.main Day1_lexer.token (Lexing.from_string s) in
   let left_sorted = List.sort ~compare:Int.compare left in
   let right_sorted = List.sort ~compare:Int.compare right in
   part2_help 0 left_sorted right_sorted Search

@@ -4,3 +4,5 @@
 	(inline_tests)
 	(preprocessor_deps (file inputs/day1.txt))
 	(preprocess (pps ppx_inline_test ppx_embed_file ppx_assert)))
+(ocamllex day1_lexer)
+(ocamlyacc day1_parser)
