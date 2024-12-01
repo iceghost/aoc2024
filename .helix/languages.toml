@@ -1,0 +1,3 @@
+[[language]]
+name = "ocaml"
+formatter = { command = "ocamlformat", args = ["-", "--impl"] }

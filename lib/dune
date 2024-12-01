@@ -1,0 +1,6 @@
+(library
+	(name day1)
+	(libraries base str)
+	(inline_tests)
+	(preprocessor_deps ../inputs/day1.txt)
+	(preprocess (pps ppx_inline_test ppx_embed_file ppx_assert)))
