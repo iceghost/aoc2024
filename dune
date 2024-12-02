@@ -3,6 +3,17 @@
 	(libraries base str)
 	(inline_tests)
 	(preprocessor_deps (file inputs/day1.txt))
-	(preprocess (pps ppx_inline_test ppx_embed_file ppx_assert)))
+	(preprocess (pps ppx_inline_test ppx_embed_file ppx_assert))
+	(modules day1 day1_lexer day1_parser))
 (ocamllex day1_lexer)
 (ocamlyacc day1_parser)
+
+(library
+	(name day2)
+	(libraries base str)
+	(inline_tests)
+	(preprocessor_deps (file inputs/day2.txt))
+	(preprocess (pps ppx_inline_test ppx_embed_file ppx_assert))
+	(modules day2 day2_lexer day2_parser))
+(ocamllex day2_lexer)
+(ocamlyacc day2_parser)
