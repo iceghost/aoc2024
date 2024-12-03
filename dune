@@ -17,3 +17,13 @@
 	(modules day2 day2_lexer day2_parser))
 (ocamllex day2_lexer)
 (ocamlyacc day2_parser)
+
+(library
+	(name day3)
+	(libraries base str)
+	(inline_tests)
+	(preprocessor_deps (file inputs/day3.txt))
+	(preprocess (pps ppx_inline_test ppx_embed_file ppx_assert))
+	(modules day3 day3_lexer day3_parser day3_node))
+(ocamllex day3_lexer)
+(ocamlyacc day3_parser)
