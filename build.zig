@@ -7,7 +7,7 @@ pub fn build(b: *std.Build) void {
     const all_step = b.step("all", "");
     b.default_step = all_step;
 
-    inline for (.{ "day1", "day4", "day5", "day6", "day8", "day14", "day16", "day17" }) |day| {
+    inline for (.{ "day1", "day4", "day5", "day6", "day8", "day14", "day16", "day17", "day22", "day24" }) |day| {
         const build_test = b.addTest(.{
             .name = day,
             .root_source_file = b.path("src/" ++ day ++ ".zig"),
@@ -15,6 +15,7 @@ pub fn build(b: *std.Build) void {
             .optimize = optimize,
         });
         const run_test = b.addRunArtifact(build_test);
+        run_test.has_side_effects = true;
         const step = b.step(day, "");
         step.dependOn(&run_test.step);
         all_step.dependOn(step);
